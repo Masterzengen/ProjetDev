@@ -6,17 +6,85 @@ public class Game extends Canvas implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -1442798787354930462L;
+	public static int WIDTH = 640;
+	public static int HEIGHT = 500;
+	private Thread thread;
+	private boolean running = false;
+	
+	public Game() {
+		new Window(WIDTH, HEIGHT, "Test", this);
+		
+	}
 
 	public synchronized void start() {
+		thread = new Thread(this);
+		thread.start();
+		running = true;
+	
+	}
+	
+	public synchronized void stop() {
+		try {
+			thread.join();
+			running = false;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
-	public void run() {
+	
+	private void tick() {
 		
 	}
+	
+	private void render() {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void run() { //Game loop, calcul les Fps
+		long lastTime = System.nanoTime();
+		double amountOfTicks = 60.0;
+		double ns = 1000000000 / amountOfTicks;
+		double delta = 0;
+		long timer = System.currentTimeMillis();
+		int frames = 0;
+		while(running){
+			long now = System.nanoTime();
+			delta += (now - lastTime) / ns;
+			lastTime = now;
+			while(delta >=1) {
+				tick();
+				delta--;
+			}
+			if(running)
+				render();
+			frames++;
+			
+			if(System.currentTimeMillis() - timer>1000) {
+				timer +=1000;
+				System.out.println("FPS: "+ frames);
+				frames = 0;
+			}	
+		}
+		stop();
+		
+	}
+	
+	
+	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		new Game();
 
 	}
 
