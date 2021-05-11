@@ -1,6 +1,6 @@
 import java.awt.Graphics;
 import java.util.LinkedList;
-
+//navigue dans tous les objects, les updates et les renders
 public class Handler {
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 	

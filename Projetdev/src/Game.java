@@ -19,6 +19,7 @@ public class Game extends Canvas implements Runnable {
 		new Window(WIDTH, HEIGHT, "Test", this);
 		
 		handler = new Handler();
+		handler.addObject(new Player(100,100,ID.Player));
 	}
 
 	public synchronized void start() {
