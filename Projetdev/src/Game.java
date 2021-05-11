@@ -1,4 +1,7 @@
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 	
@@ -40,7 +43,17 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	private void render() {
+		BufferStrategy bs = this.getBufferStrategy();
+		if(bs==null) {
+			this.createBufferStrategy(3);
+			return;
+		}
+		Graphics g = bs.getDrawGraphics();
 		
+		g.setColor(Color.black);
+		g.fillRect(0,0,WIDTH,HEIGHT);
+		g.dispose();
+		bs.show();
 	}
 	
 	
