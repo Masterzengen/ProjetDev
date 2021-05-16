@@ -14,12 +14,14 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private boolean running = false;
 	private Handler handler;
+	private Hud hud;
 	
 	public Game() {
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH, HEIGHT, "Test", this);
 		
+		hud = new Hud();
 		
 		handler.addObject(new Player(100,100,ID.Player));
 		handler.addObject(new Ennemy(100,100,ID.Ennemy));
@@ -46,6 +48,7 @@ public class Game extends Canvas implements Runnable {
 	
 	private void tick() {
 		handler.tick();
+		hud.tick();
 	}
 	
 	private void render() {
@@ -59,6 +62,7 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.black);
 		g.fillRect(0,0,WIDTH,HEIGHT);
 		handler.render(g);
+		hud.render(g);
 		g.dispose();
 		bs.show();
 	}
