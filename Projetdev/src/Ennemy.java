@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Ennemy extends GameObject{
 
@@ -9,6 +10,9 @@ public class Ennemy extends GameObject{
 		velY = 3;
 	}
 
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,20,20);
+	}
 	@Override
 	public void tick() {
 		x +=velX;

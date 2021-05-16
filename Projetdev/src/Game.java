@@ -23,7 +23,7 @@ public class Game extends Canvas implements Runnable {
 		
 		hud = new Hud();
 		
-		handler.addObject(new Player(100,100,ID.Player));
+		handler.addObject(new Player(100,100,ID.Player,handler));
 		handler.addObject(new Ennemy(100,100,ID.Ennemy));
 	}
 

@@ -6,8 +6,11 @@ public class Hud {
 	public static int PV = 100;
 	
 	public void tick() {
-		PV--;
+		//PV--;
 	}
+	
+	
+	
 	
 	public void render(Graphics g) {
 		g.setColor(Color.green);
