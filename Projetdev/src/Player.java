@@ -8,9 +8,9 @@ public class Player extends GameObject {
 		velX = 1;
 	}
 	
-	public void tick() {
-		x += velX;
-		y += velY;
+	public void tick() { //chaque tick on update la position par la vélocité
+		//x += velX;
+		//y += velY;
 	}
 
 	public void render(Graphics g) {
