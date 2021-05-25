@@ -29,7 +29,7 @@ public class Player extends GameObject {
 	private void collision() {
 		for(int i =0; i< handler.object.size();i++) {
 			GameObject tempobject = handler.object.get(i);
-			if(tempobject.getId() == ID.Ennemy) {
+			if(tempobject.getId() == ID.Enemy) {
 				if(getBounds().intersects(tempobject.getBounds())) {
 					Hud.PV = Hud.PV-2;
 				}

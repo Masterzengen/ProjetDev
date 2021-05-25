@@ -1,5 +1,5 @@
 
 public enum ID {
-	Player(),Ennemy();
+	Player(),Enemy(),Queue();
 
 }

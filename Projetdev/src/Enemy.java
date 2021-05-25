@@ -2,12 +2,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Ennemy extends GameObject{
+public class Enemy extends GameObject{
+	
+	private Handler handler;
 
-	public Ennemy(int x, int y, ID id) {
+	public Enemy(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		velX = 3;
 		velY = 3;
+		this.handler=handler;
 	}
 
 	public Rectangle getBounds() {
@@ -20,6 +23,8 @@ public class Ennemy extends GameObject{
 		//L'ennemi rebondi sur les cotés.
 		if(y <=0 || y>=Game.HEIGHT - 48) velY = velY *(-1);
 		if(x <=0 || x>=Game.WIDTH - 32) velX = velX *(-1);
+		
+		handler.addObject(new Queue(x,y,20,20,0.1f,ID.Queue,handler,Color.red));
 	}
 
 	@Override
